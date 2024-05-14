@@ -1,0 +1,5 @@
+node_modules
+test/CocosTest/library
+test/CocosTest/temp
+test/CocosTest/build
+test/CocosTest/local
