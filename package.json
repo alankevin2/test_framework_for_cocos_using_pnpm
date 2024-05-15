@@ -2,7 +2,7 @@
   "name": "test_framework_using_pnpm_for_cocos",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/output.js",
   "type": "module",
   "author": "",
   "license": "ISC",
