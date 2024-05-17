@@ -12,7 +12,7 @@
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": false,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "moduleResolution": "node",
         "baseUrl": "./",
         "resolveJsonModule": true,

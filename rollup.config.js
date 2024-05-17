@@ -25,10 +25,15 @@ const config = {
     ], 
     plugins: [ 
         // 解析第三方依赖 
-        resolve(), 
-        commonjs(), // 雖然我們target是es, 但不知道為什麼還是需要commonjs的plugin，才能讓我們export async functions....
+        resolve({
+            browser:true
+        }), 
+        commonjs({ 
+            include: 'node_modules/**', // 包含所有 node_modules 中的文件
+            transformMixedEsModules: true, // 处理混合的 ES 模块和 CommonJS 模块
+         }), // 雖然我們target是es, 但不知道為什麼還是需要commonjs的plugin，才能讓我們export async functions....
         // rollup 编译 typescript 
-        rollupTypescript(), 
+        rollupTypescript(),
         // babel 配置 
         babel({ 
             // 编译库使用 

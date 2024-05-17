@@ -1,3 +1,5 @@
+import * as Model from 'src/networking/data/ProtoModels';
+
 declare class Networking {
     start(): void;
 }
@@ -62,6 +64,7 @@ declare namespace Decorator {
 
 declare const framework: {
     Networking: typeof Networking;
+    Model: typeof Model;
     NetworkingEvents: typeof NetworkingEvents;
     EventDispatcher: typeof EventDispatcher;
     MVVM: {

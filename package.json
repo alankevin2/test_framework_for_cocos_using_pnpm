@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/output.js",
+  "files": [
+    "dist",
+    "protos"
+  ],
   "type": "module",
   "author": "",
   "license": "ISC",
   "scripts": {
     "clean:dist": "rimraf dist",
     "build": "npm run clean:dist && rollup -c rollup.config.js",
-    "release": "export MINIFY=true && npm run build && rollup -c"
+    "release": "export MINIFY=true && npm run build && rollup -c",
+    "proto": "pbjs protos/*.proto --ts src/networking/data/ProtoModels.ts"
   },
-  "files": [
-    "dist"
-  ],
+  "devDependencies": {
+    "pbjs": "^0.0.14",
+    "protobufjs": "^7.3.0"
+  },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.23.7",
     "@babel/preset-env": "^7.23.8",
