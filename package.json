@@ -5,7 +5,7 @@
   "main": "dist/output.js",
   "files": [
     "dist",
-    "protos"
+    "src/networking/data"
   ],
   "type": "module",
   "author": "",
