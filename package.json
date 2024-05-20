@@ -4,8 +4,7 @@
   "description": "",
   "main": "dist/output.js",
   "files": [
-    "dist",
-    "src/networking/data"
+    "dist"
   ],
   "type": "module",
   "author": "",
