@@ -1,8 +1,8 @@
 export interface Person {
-  name?: string;
-  age?: number;
+  name: string;
+  age: number;
   hobbies?: string[];
-  membership?: Membership;
+  membership: Membership;
 }
 
 export function encodePerson(message: Person): Uint8Array {
@@ -12,14 +12,14 @@ export function encodePerson(message: Person): Uint8Array {
 }
 
 function _encodePerson(message: Person, bb: ByteBuffer): void {
-  // optional string name = 1;
+  // required string name = 1;
   let $name = message.name;
   if ($name !== undefined) {
     writeVarint32(bb, 10);
     writeString(bb, $name);
   }
 
-  // optional int32 age = 2;
+  // required int32 age = 2;
   let $age = message.age;
   if ($age !== undefined) {
     writeVarint32(bb, 16);
@@ -35,7 +35,7 @@ function _encodePerson(message: Person, bb: ByteBuffer): void {
     }
   }
 
-  // optional Membership membership = 4;
+  // required Membership membership = 4;
   let $membership = message.membership;
   if ($membership !== undefined) {
     writeVarint32(bb, 34);
@@ -61,13 +61,13 @@ function _decodePerson(bb: ByteBuffer): Person {
       case 0:
         break end_of_message;
 
-      // optional string name = 1;
+      // required string name = 1;
       case 1: {
         message.name = readString(bb, readVarint32(bb));
         break;
       }
 
-      // optional int32 age = 2;
+      // required int32 age = 2;
       case 2: {
         message.age = readVarint32(bb);
         break;
@@ -80,7 +80,7 @@ function _decodePerson(bb: ByteBuffer): Person {
         break;
       }
 
-      // optional Membership membership = 4;
+      // required Membership membership = 4;
       case 4: {
         let limit = pushTemporaryLength(bb);
         message.membership = _decodeMembership(bb);
@@ -92,6 +92,15 @@ function _decodePerson(bb: ByteBuffer): Person {
         skipUnknownField(bb, tag & 7);
     }
   }
+
+  if (message.name === undefined)
+    throw new Error("Missing required field: name");
+
+  if (message.age === undefined)
+    throw new Error("Missing required field: age");
+
+  if (message.membership === undefined)
+    throw new Error("Missing required field: membership");
 
   return message;
 }
@@ -153,8 +162,8 @@ function _decodePersons(bb: ByteBuffer): Persons {
 }
 
 export interface Membership {
-  plan?: number;
-  expiration?: string;
+  plan: number;
+  expiration: string;
 }
 
 export function encodeMembership(message: Membership): Uint8Array {
@@ -164,14 +173,14 @@ export function encodeMembership(message: Membership): Uint8Array {
 }
 
 function _encodeMembership(message: Membership, bb: ByteBuffer): void {
-  // optional int32 plan = 1;
+  // required int32 plan = 1;
   let $plan = message.plan;
   if ($plan !== undefined) {
     writeVarint32(bb, 8);
     writeVarint64(bb, intToLong($plan));
   }
 
-  // optional string expiration = 2;
+  // required string expiration = 2;
   let $expiration = message.expiration;
   if ($expiration !== undefined) {
     writeVarint32(bb, 18);
@@ -193,13 +202,13 @@ function _decodeMembership(bb: ByteBuffer): Membership {
       case 0:
         break end_of_message;
 
-      // optional int32 plan = 1;
+      // required int32 plan = 1;
       case 1: {
         message.plan = readVarint32(bb);
         break;
       }
 
-      // optional string expiration = 2;
+      // required string expiration = 2;
       case 2: {
         message.expiration = readString(bb, readVarint32(bb));
         break;
@@ -209,6 +218,12 @@ function _decodeMembership(bb: ByteBuffer): Membership {
         skipUnknownField(bb, tag & 7);
     }
   }
+
+  if (message.plan === undefined)
+    throw new Error("Missing required field: plan");
+
+  if (message.expiration === undefined)
+    throw new Error("Missing required field: expiration");
 
   return message;
 }
