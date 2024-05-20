@@ -473,6 +473,9 @@ function _decodePerson(bb) {
         skipUnknownField(bb, tag & 7);
     }
   }
+  if (message.name === undefined) throw new Error("Missing required field: name");
+  if (message.age === undefined) throw new Error("Missing required field: age");
+  if (message.membership === undefined) throw new Error("Missing required field: membership");
   return message;
 }
 function encodePersons(message) {
@@ -567,6 +570,8 @@ function _decodeMembership(bb) {
         skipUnknownField(bb, tag & 7);
     }
   }
+  if (message.plan === undefined) throw new Error("Missing required field: plan");
+  if (message.expiration === undefined) throw new Error("Missing required field: expiration");
   return message;
 }
 function pushTemporaryLength(bb) {

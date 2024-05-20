@@ -44,10 +44,10 @@ declare function bindable(target: ViewModel, key: string): void;
 declare function UseViewModel(VMClass: typeof ViewModel): ClassDecorator;
 
 interface Person {
-    name?: string;
-    age?: number;
+    name: string;
+    age: number;
     hobbies?: string[];
-    membership?: Membership;
+    membership: Membership;
 }
 declare function encodePerson(message: Person): Uint8Array;
 declare function decodePerson(binary: Uint8Array): Person;
@@ -57,8 +57,8 @@ interface Persons {
 declare function encodePersons(message: Persons): Uint8Array;
 declare function decodePersons(binary: Uint8Array): Persons;
 interface Membership {
-    plan?: number;
-    expiration?: string;
+    plan: number;
+    expiration: string;
 }
 declare function encodeMembership(message: Membership): Uint8Array;
 declare function decodeMembership(binary: Uint8Array): Membership;
