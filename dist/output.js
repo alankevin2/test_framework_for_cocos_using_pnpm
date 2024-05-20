@@ -227,18 +227,6 @@ function UseViewModel(VMClass) {
   };
 }
 
-var Decorator = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  BindRegExp: BindRegExp,
-  BindableRegExp: BindableRegExp,
-  MakeBindKey: MakeBindKey,
-  MakeBindableKey: MakeBindableKey,
-  MakeBinderKey: MakeBinderKey,
-  UseViewModel: UseViewModel,
-  bind: bind,
-  bindable: bindable
-});
-
 var ViewModel = /*#__PURE__*/function () {
   function ViewModel(comp) {
     _classCallCheck(this, ViewModel);
@@ -832,26 +820,4 @@ function writeVarint64(bb, value) {
   }
 }
 
-var Model = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  decodeMembership: decodeMembership,
-  decodePerson: decodePerson,
-  decodePersons: decodePersons,
-  encodeMembership: encodeMembership,
-  encodePerson: encodePerson,
-  encodePersons: encodePersons
-});
-
-var framework = {
-  Networking: Networking,
-  Model: Model,
-  NetworkingEvents: NetworkingEvents,
-  EventDispatcher: EventDispatcher,
-  MVVM: {
-    View: View,
-    ViewModel: ViewModel,
-    Decorator: Decorator
-  }
-};
-
-export { framework as default };
+export { EventDispatcher, Networking, NetworkingEvents, UseViewModel, View, ViewModel, bind, bindable, decodeMembership, decodePerson, decodePersons, encodeMembership, encodePerson, encodePersons };

@@ -1,20 +1,7 @@
-import { Networking, NetworkingEvents } from './networking/Networking';
 import EventDispatcher from './util/EventDispatcher';
-import { View } from './mvvm/View';
-import { ViewModel } from './mvvm/ViewModel';
-import * as Decorator from './mvvm/Decorator';
-import * as Model from './networking/data/ProtoModels';
-
-const framework = {
-    Networking: Networking,
-    Model: Model,
-    NetworkingEvents: NetworkingEvents,
-    EventDispatcher: EventDispatcher,
-    MVVM: {
-        View: View,
-        ViewModel: ViewModel,
-        Decorator: Decorator,
-    }
-}
-
-export default framework;
+export { EventDispatcher };
+export { Networking, NetworkingEvents } from './networking/Networking';
+export { View } from './mvvm/View';
+export { ViewModel } from './mvvm/ViewModel';
+export { bind, bindable, UseViewModel } from './mvvm/Decorator';
+export { Person, Persons, Membership, encodeMembership, encodePerson, encodePersons, decodeMembership, decodePerson, decodePersons } from './networking/data/ProtoModels';
