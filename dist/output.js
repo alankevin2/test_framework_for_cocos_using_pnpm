@@ -840,3 +840,5 @@ exports.decodePersons = decodePersons;
 exports.encodeMembership = encodeMembership;
 exports.encodePerson = encodePerson;
 exports.encodePersons = encodePersons;
+
+module.exports = Object.assign({}, module.exports, exports)

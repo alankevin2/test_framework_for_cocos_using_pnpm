@@ -1,4 +1,8 @@
-declare var cc: any;
+declare namespace cc {
+    export class Component {
+        static __comp__vm__: ViewModel
+    }
+};
 
 import { ViewModel, ViewModelDependent } from './ViewModel';
 import { BindRegExp, MakeBindableKey, MakeBinderKey } from './Decorator';
@@ -21,8 +25,10 @@ export class View extends cc.Component implements ViewModelDependent {
         let toBeBounded: string[] = [];
         const keys = Object.keys(this);
         keys.forEach( k => {
+            // @ts-ignore
             if (this[k] instanceof ViewModel) {
                 if (!checkIfOneVm) {
+                    // @ts-ignore
                     checkIfOneVm = this[k];
                 } else {
                     throw new Error(`No more than one ViewModel for a component! \n ViewModel key=${k} is prohibited!`);
