@@ -21,7 +21,7 @@ const config = {
             // package.json 配置的 module 属性 
             file: isProduction ? './dist/output.min.js' : './dist/output.js', 
             format: 'cjs',
-            banner:'const exports = {};',
+            banner:'let exports = exports || {}; module.exports = {};',
             outro: 'module.exports = Object.assign({}, module.exports, exports)',
         },
     ], 

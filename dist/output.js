@@ -1,4 +1,4 @@
-const exports = {};
+let exports = exports || {}; module.exports = {};
 'use strict';
 
 function _classCallCheck(instance, Constructor) {
