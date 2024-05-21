@@ -1,4 +1,3 @@
-import { View } from "./View";
 import { ViewModel } from "./ViewModel";
 
 /**
@@ -34,9 +33,6 @@ export const BindableRegExp = /^_bindable_([a-zA-Z][a-zA-Z0-9]*)_bindable_$/;
  */
 export function UseViewModel(VMClass: typeof ViewModel): ClassDecorator {
     return function(target: any) {
-        if (Object.getPrototypeOf(target) != View) {
-            throw new Error('UseViewModel can only apply on those who inherits View');
-        }
         const vmInstance = new VMClass(target);
         vmInstance.startBinding();
         target['__comp__vm__'] = vmInstance;

@@ -12,6 +12,9 @@ export class ViewModel {
     protected dependentClass: typeof View;
 
     constructor(comp: typeof View) {
+        if (Object.getPrototypeOf(comp) != View) {
+            throw new Error('UseViewModel can only apply on those who inherits View');
+        }
         this.dependentClass = comp;
     }
 

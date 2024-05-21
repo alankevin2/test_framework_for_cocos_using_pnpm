@@ -48,7 +48,7 @@ export class View extends cc.Component implements ViewModelDependent {
             const originKey = BindRegExp.exec(k) ? BindRegExp.exec(k)![1] : '';
             const vmKey = MakeBindableKey(originKey);
             if (!(`${vmKey}` in vm)) {
-                throw new Error(`Did not find key=${vmKey} in the ViewModel!`);
+                throw new Error(`Did not find bindable key=${vmKey} in the ViewModel!`);
             }
             Object.defineProperty(this, originKey, {
                 get: function() {

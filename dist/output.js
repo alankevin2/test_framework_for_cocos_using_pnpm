@@ -1,3 +1,5 @@
+'use strict';
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -116,25 +118,25 @@ var Networking = /*#__PURE__*/function () {
     key: "start",
     value: function start() {
       setTimeout(function () {
-        EventDispatcher.emit(NetworkingEvents.DATA1, {
+        EventDispatcher.emit(exports.NetworkingEvents.DATA1, {
           name: 'This is data1',
           value: 0
         });
       }, 5000);
       setTimeout(function () {
-        EventDispatcher.emit(NetworkingEvents.DATA1, {
+        EventDispatcher.emit(exports.NetworkingEvents.DATA1, {
           name: 'This is data1 updated',
           value: 123
         });
       }, 15000);
       setTimeout(function () {
-        EventDispatcher.emit(NetworkingEvents.DATA2, {
+        EventDispatcher.emit(exports.NetworkingEvents.DATA2, {
           name: 'This is data2',
           value: 'first time111111'
         });
       }, 10000);
       setTimeout(function () {
-        EventDispatcher.emit(NetworkingEvents.DATA2, {
+        EventDispatcher.emit(exports.NetworkingEvents.DATA2, {
           name: 'This is data2',
           value: 'first time222222'
         });
@@ -142,11 +144,11 @@ var Networking = /*#__PURE__*/function () {
     }
   }]);
 }();
-var NetworkingEvents;
+exports.NetworkingEvents = void 0;
 (function (NetworkingEvents) {
   NetworkingEvents["DATA1"] = "DATA1";
   NetworkingEvents["DATA2"] = "DATA2";
-})(NetworkingEvents || (NetworkingEvents = {}));
+})(exports.NetworkingEvents || (exports.NetworkingEvents = {}));
 
 function _assertThisInitialized(self) {
   if (self === void 0) {
@@ -218,9 +220,6 @@ var BindRegExp = /^_bind_([a-zA-Z][a-zA-Z0-9]*)_bind_$/;
 var BindableRegExp = /^_bindable_([a-zA-Z][a-zA-Z0-9]*)_bindable_$/;
 function UseViewModel(VMClass) {
   return function (target) {
-    if (Object.getPrototypeOf(target) != View) {
-      throw new Error('UseViewModel can only apply on those who inherits View');
-    }
     var vmInstance = new VMClass(target);
     vmInstance.startBinding();
     target['__comp__vm__'] = vmInstance;
@@ -232,6 +231,9 @@ var ViewModel = /*#__PURE__*/function () {
     _classCallCheck(this, ViewModel);
     _defineProperty(this, "dependent", void 0);
     _defineProperty(this, "dependentClass", void 0);
+    if (Object.getPrototypeOf(comp) != View) {
+      throw new Error('UseViewModel can only apply on those who inherits View');
+    }
     this.dependentClass = comp;
   }
   return _createClass(ViewModel, [{
@@ -329,7 +331,7 @@ var View = /*#__PURE__*/function (_cc$Component) {
         var originKey = BindRegExp.exec(k) ? BindRegExp.exec(k)[1] : '';
         var vmKey = MakeBindableKey(originKey);
         if (!("".concat(vmKey) in vm)) {
-          throw new Error("Did not find key=".concat(vmKey, " in the ViewModel!"));
+          throw new Error("Did not find bindable key=".concat(vmKey, " in the ViewModel!"));
         }
         Object.defineProperty(_this3, originKey, {
           get: function get() {
@@ -825,4 +827,16 @@ function writeVarint64(bb, value) {
   }
 }
 
-export { EventDispatcher, Networking, NetworkingEvents, UseViewModel, View, ViewModel, bind, bindable, decodeMembership, decodePerson, decodePersons, encodeMembership, encodePerson, encodePersons };
+exports.EventDispatcher = EventDispatcher;
+exports.Networking = Networking;
+exports.UseViewModel = UseViewModel;
+exports.View = View;
+exports.ViewModel = ViewModel;
+exports.bind = bind;
+exports.bindable = bindable;
+exports.decodeMembership = decodeMembership;
+exports.decodePerson = decodePerson;
+exports.decodePersons = decodePersons;
+exports.encodeMembership = encodeMembership;
+exports.encodePerson = encodePerson;
+exports.encodePersons = encodePersons;

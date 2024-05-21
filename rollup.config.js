@@ -20,7 +20,7 @@ const config = {
         { 
             // package.json 配置的 module 属性 
             file: isProduction ? './dist/output.min.js' : './dist/output.js', 
-            format: 'es',
+            format: 'cjs',
         },
     ], 
     plugins: [ 
@@ -63,7 +63,7 @@ const config2 = {
     input: path.resolve(__dirname, 'src/index.ts'),
     output: {
       file: `dist/output.d.ts`,
-      format: 'es',
+      format: 'cjs',
     },
     plugins: [dts()],
 }
