@@ -1,6 +1,3 @@
-let exports = exports || {}; module.exports = {};
-'use strict';
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -119,25 +116,25 @@ var Networking = /*#__PURE__*/function () {
     key: "start",
     value: function start() {
       setTimeout(function () {
-        EventDispatcher.emit(exports.NetworkingEvents.DATA1, {
+        EventDispatcher.emit(NetworkingEvents.DATA1, {
           name: 'This is data1',
           value: 0
         });
       }, 5000);
       setTimeout(function () {
-        EventDispatcher.emit(exports.NetworkingEvents.DATA1, {
+        EventDispatcher.emit(NetworkingEvents.DATA1, {
           name: 'This is data1 updated',
           value: 123
         });
       }, 15000);
       setTimeout(function () {
-        EventDispatcher.emit(exports.NetworkingEvents.DATA2, {
+        EventDispatcher.emit(NetworkingEvents.DATA2, {
           name: 'This is data2',
           value: 'first time111111'
         });
       }, 10000);
       setTimeout(function () {
-        EventDispatcher.emit(exports.NetworkingEvents.DATA2, {
+        EventDispatcher.emit(NetworkingEvents.DATA2, {
           name: 'This is data2',
           value: 'first time222222'
         });
@@ -145,11 +142,11 @@ var Networking = /*#__PURE__*/function () {
     }
   }]);
 }();
-exports.NetworkingEvents = void 0;
+var NetworkingEvents;
 (function (NetworkingEvents) {
   NetworkingEvents["DATA1"] = "DATA1";
   NetworkingEvents["DATA2"] = "DATA2";
-})(exports.NetworkingEvents || (exports.NetworkingEvents = {}));
+})(NetworkingEvents || (NetworkingEvents = {}));
 
 function _assertThisInitialized(self) {
   if (self === void 0) {
@@ -828,18 +825,4 @@ function writeVarint64(bb, value) {
   }
 }
 
-exports.EventDispatcher = EventDispatcher;
-exports.Networking = Networking;
-exports.UseViewModel = UseViewModel;
-exports.View = View;
-exports.ViewModel = ViewModel;
-exports.bind = bind;
-exports.bindable = bindable;
-exports.decodeMembership = decodeMembership;
-exports.decodePerson = decodePerson;
-exports.decodePersons = decodePersons;
-exports.encodeMembership = encodeMembership;
-exports.encodePerson = encodePerson;
-exports.encodePersons = encodePersons;
-
-module.exports = Object.assign({}, module.exports, exports)
+export { EventDispatcher, Networking, NetworkingEvents, UseViewModel, View, ViewModel, bind, bindable, decodeMembership, decodePerson, decodePersons, encodeMembership, encodePerson, encodePersons };
