@@ -26,11 +26,7 @@ declare class ViewModel {
     componentLoaded<T extends View>(comp: T): void;
 }
 
-declare namespace cc {
-    class Component {
-        static __comp__vm__: ViewModel;
-    }
-}
+declare var cc: any;
 
 declare class View extends cc.Component implements ViewModelDependent {
     dependentDestroyed: boolean;

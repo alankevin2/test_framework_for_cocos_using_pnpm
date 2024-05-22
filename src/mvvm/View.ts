@@ -1,8 +1,4 @@
-declare namespace cc {
-    export class Component {
-        static __comp__vm__: ViewModel
-    }
-};
+declare var cc: any;
 
 import { ViewModel, ViewModelDependent } from './ViewModel';
 import { BindRegExp, MakeBindableKey, MakeBinderKey } from './Decorator';
